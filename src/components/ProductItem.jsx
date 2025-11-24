@@ -36,7 +36,6 @@ export default function ProductItem({
         className="product-item__image"
       />
 
-      {/* LIKE */}
       <div className="product-item-like-div">
         <button
           className={`product-item__like ${isLiked ? "active" : ""}`}
@@ -46,7 +45,6 @@ export default function ProductItem({
         </button>
       </div>
 
-      {/* DETAILS */}
       <div className="product-item__details">
         <div className="product-item__rating-wrapper">
           <div className="product-item__stars">

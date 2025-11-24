@@ -59,11 +59,7 @@ export default function Ourproducts() {
               Our products.
             </Text>
           </Flex>
-          <ul
-            className={`${
-              products.length > 0 ? "products__top-list" : ""
-            }`}
-          >
+          <ul className={`${products.length > 0 ? "products__top-list" : ""}`}>
             {loading ? (
               Array.from({ length: 6 }).map((el, index) => (
                 <li key={index} className="product-item">

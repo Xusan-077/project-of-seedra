@@ -43,7 +43,11 @@ export default function ProductDetailPage() {
         <div className="detail__inner">
           <div className="detail__inner-top">
             <div className="left">
-              <img src={find.image} alt="" className="detail__img" />
+              <h2 className="detail__title--active">{find.name}</h2>
+
+              <div className="detail__img-div">
+                <img src={find.image} alt="" className="detail__img" />
+              </div>
               <div className="detail__left-bottom">
                 {[
                   detailImg1,
@@ -117,10 +121,10 @@ export default function ProductDetailPage() {
                       {isLiked ? <img src={like} /> : <img src={unlike} />}
                     </button>
                   </div>
-                  {inCart.count > 0 ? (
+                  {inCart && inCart.count > 0 ? (
                     <div className="detail__incart-div">
                       <button
-                        disabled={inCart.count == 0}
+                        disabled={inCart.count === 0}
                         onClick={() => dispatch(removeFromCart(find))}
                         className="detail__incart-minus-btn"
                       >
@@ -149,14 +153,14 @@ export default function ProductDetailPage() {
                       onClick={() => dispatch(addToCart(find))}
                       className="detail__add-cart"
                     >
-                      Add to card
+                      Add to cart
                     </button>
                   )}
                 </div>
               </div>
             </div>
           </div>
-          <div className="detail__inner-bottom">
+          {/* <div className="detail__inner-bottom">
             <h2 className="detail__information">Product information.</h2>
 
             <div className="detail__information-top">
@@ -192,7 +196,7 @@ export default function ProductDetailPage() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
