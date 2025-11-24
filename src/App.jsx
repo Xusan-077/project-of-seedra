@@ -7,12 +7,14 @@ import Layout from "./components/Layout";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import Likes from "./pages/Likes";
 import Savat from "./pages/Savat";
+import SearchPage from "./pages/SearchPage";
 
 export default function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route path="/" element={<Products />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="/product/:productId" element={<ProductDetailPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />

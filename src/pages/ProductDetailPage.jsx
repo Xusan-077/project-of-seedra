@@ -1,7 +1,12 @@
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addToLike } from "../store/likeSlice";
+import { addToCart, removeFromCart } from "../store/cartSlice";
 import { useParams } from "react-router-dom";
 import { productsData } from "../Constants/Products";
 
-import heard from "../assets/icons/heart-icon.svg";
+import unlike from "../assets/icons/unlike.svg";
+import like from "../assets/icons/like.svg";
 
 import detailImg1 from "../assets/images/detail-img-1.png";
 import detailImg2 from "../assets/images/detail-img-2.png";
@@ -9,15 +14,16 @@ import detailImg3 from "../assets/images/detail-img-3.png";
 import detailImg4 from "../assets/images/detail-img-4.png";
 import detailImg5 from "../assets/images/detail-img-5.png";
 import detailImg6 from "../assets/images/detail-img-6.png";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addToLike } from "../store/likeSlice";
+
+import minus from "../assets/icons/Minus.svg";
+import add from "../assets/icons/Add.svg";
 
 export default function ProductDetailPage() {
   const [changed, setChange] = useState(1);
 
   const dispatch = useDispatch();
   const { likes } = useSelector((state) => state.like);
+  const { carts } = useSelector((state) => state.cart);
 
   const params = useParams();
 
@@ -26,6 +32,10 @@ export default function ProductDetailPage() {
   console.log(find);
 
   const isLiked = likes.some((el) => el.id == params.productId);
+
+  console.log(carts);
+
+  const inCart = carts.find((el) => el.id == find.id);
 
   return (
     <section className="detail">
@@ -92,18 +102,56 @@ export default function ProductDetailPage() {
                 <span className="detail__price">
                   ${(find.price * changed).toFixed(2)}
                 </span>
-                <div className="detail__right-bottom__bottom">
-                  <button
-                    className={`product-item__like ${isLiked ? "active" : ""}`}
-                    onClick={() => dispatch(addToLike(find))}
+                <div className="detail__bottom-right">
+                  <div
+                    className={`detail__right-bottom__bottom ${
+                      isLiked ? "active" : ""
+                    }`}
                   >
-                    <i
-                      className={`product-item-like-img detail__heard bi bi-heart ${
+                    <button
+                      className={`product-item__like ${
                         isLiked ? "active" : ""
                       }`}
-                    ></i>
-                  </button>
-                  <button className="detail__add-cart">Add to card</button>
+                      onClick={() => dispatch(addToLike(find))}
+                    >
+                      {isLiked ? <img src={like} /> : <img src={unlike} />}
+                    </button>
+                  </div>
+                  {inCart.count > 0 ? (
+                    <div className="detail__incart-div">
+                      <button
+                        disabled={inCart.count == 0}
+                        onClick={() => dispatch(removeFromCart(find))}
+                        className="detail__incart-minus-btn"
+                      >
+                        <img
+                          src={minus}
+                          alt=""
+                          className="detail__incart-minus-img"
+                        />
+                      </button>
+                      <span className="detail__incart-count-span">
+                        {inCart.count}
+                      </span>
+                      <button
+                        onClick={() => dispatch(addToCart(find))}
+                        className="detail__incart-add-btn"
+                      >
+                        <img
+                          src={add}
+                          alt=""
+                          className="detail__incart-add-img"
+                        />
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => dispatch(addToCart(find))}
+                      className="detail__add-cart"
+                    >
+                      Add to card
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

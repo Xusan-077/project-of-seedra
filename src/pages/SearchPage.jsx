@@ -2,41 +2,20 @@ import { Flex, Group, Input, Skeleton, Text } from "@mantine/core";
 
 import { useEffect, useState } from "react";
 import { API } from "../API";
-import ProductItem from "./ProductItem";
+import ProductItem from "../components/ProductItem";
 
 import { useSelector } from "react-redux";
 import { productsData } from "../Constants/Products";
 
-export default function Ourproducts() {
+export default function SearchPage() {
   const { search } = useSelector((state) => state.search);
 
   const [products, setProducts] = useState(productsData);
+  const [filteredProducts, setFilteredProducts] = useState(products);
 
   const [loading, setLoading] = useState(false);
 
-  // const [error, setError] = useState("");
-
-  // async function getProducts() {
-  //   try {
-  //     setLoading(true);
-  //     const res = await API.get("/products");
-
-  //     setProducts(res.data);
-
-  //     setLoading(false);
-  //   } catch (err) {
-  //     console.log("getda xatolik");
-  //     setError(err.massage || "xatolik");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }
-
   console.log(products);
-
-  // useEffect(() => {
-  //   getProducts();
-  // }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -44,6 +23,13 @@ export default function Ourproducts() {
       setLoading(false);
     }, 1000);
   }, []);
+
+  useEffect(() => {
+    const filtred = products.filter((el) =>
+      el.name.toLowerCase().includes(search.toLowerCase())
+    );
+    setFilteredProducts(filtred);
+  }, [search, products]);
 
   return (
     <section className="products">
@@ -61,7 +47,7 @@ export default function Ourproducts() {
           </Flex>
           <ul
             className={`${
-              products.length > 0 ? "products__top-list" : ""
+              filteredProducts.length > 0 ? "products__top-list" : ""
             }`}
           >
             {loading ? (
@@ -92,8 +78,8 @@ export default function Ourproducts() {
                   </div>
                 </li>
               ))
-            ) : products.length > 0 ? (
-              products.map((el) => (
+            ) : filteredProducts.length > 0 ? (
+              filteredProducts.map((el) => (
                 <ProductItem key={el.id} product={el} {...el} />
               ))
             ) : (
