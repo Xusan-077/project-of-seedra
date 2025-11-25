@@ -1327,3 +1327,64 @@ button {
         text-align: center;
     }
 }
+
+/* footer */
+
+.footer {
+    background-color: #F7F7F7FF;
+}
+
+.footer__inner {
+    padding: 40px 0;
+    margin-top: 40px;
+}
+
+.footer__inner-top {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #359740;
+    padding-bottom: 33px;
+}
+
+.footer__list {
+    display: flex;
+    align-items: center;
+}
+
+.footer__item {}
+
+.footer__link {
+    font-size: 14px;
+    font-weight: 500;
+    color: #70737C;
+    padding: 10px 32px;
+    display: block;
+    border-right: 1px solid #4FA083;
+}
+
+.footer__link.active {
+    color: #359740;
+}
+
+.footer__logo-link {}
+
+.footer__logo {
+    margin: 0 70px 0 75px;
+}
+
+.footer__inner-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 33px;
+
+}
+
+.footer-icons {}
+
+.footer-icon {}
+
+.footer__bottom-right {
+    font-size: 14px;
+    color: #70737C;
+}

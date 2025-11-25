@@ -61,7 +61,7 @@ export default function Ourproducts() {
           </Flex>
           <ul className={`${products.length > 0 ? "products__top-list" : ""}`}>
             {loading ? (
-              Array.from({ length: 6 }).map((el, index) => (
+              Array.from({ length: 9 }).map((el, index) => (
                 <li key={index} className="product-item">
                   <Skeleton height={300} width={300} radius="lg" />
 
