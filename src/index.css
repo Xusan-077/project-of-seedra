@@ -20,6 +20,35 @@ button {
     margin: 0 auto;
 }
 
+.back-to-top {
+    position: fixed;
+    right: 20px;
+    width: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 65px;
+    background-color: #359740;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    transition: all 0.3s ease;
+}
+
+.back-to-top i {
+    font-size: 50px;
+    color: #fff;
+}
+
+.back-to-top.show {
+    bottom: 20px;
+}
+
+.back-to-top.hide {
+    bottom: -120px;
+}
+
 /* headre */
 
 .header {

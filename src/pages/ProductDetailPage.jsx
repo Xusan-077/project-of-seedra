@@ -42,7 +42,7 @@ export default function ProductDetailPage() {
   const inCart = carts.find((el) => el.id == find.id);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: "instant" });
   }, []);
 
   return (

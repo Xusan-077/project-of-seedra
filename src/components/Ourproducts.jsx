@@ -14,7 +14,6 @@ export default function Ourproducts() {
 
   const [loading, setLoading] = useState(false);
 
-
   // const [error, setError] = useState("");
 
   // async function getProducts() {
@@ -45,8 +44,6 @@ export default function Ourproducts() {
       setLoading(false);
     }, 1000);
   }, []);
-
-  window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
     <section className="products">
