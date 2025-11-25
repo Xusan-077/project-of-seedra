@@ -5,7 +5,7 @@ import instagram from "../assets/icons/indtagram-icon.svg";
 import facebook from "../assets/icons/facebook-icons.svg";
 import heart from "../assets/icons/heart-icon.svg";
 import savat from "../assets/icons/savat-icon.svg";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { changeSearch } from "../store/searchSlice";
 
 import burgerImg from "../assets/icons/burger.svg";
@@ -14,8 +14,6 @@ import { useState } from "react";
 
 export default function Header() {
   const [burger, setBurger] = useState(false);
-
-  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -165,6 +163,7 @@ export default function Header() {
 
             <div className="header__burger-middle">
               <NavLink
+                onClick={() => setBurger(false)}
                 className={`${({ isActive }) =>
                   isActive ? "active" : ""} header__burger-link`}
                 to="/blog"
@@ -172,11 +171,20 @@ export default function Header() {
                 Our blog
               </NavLink>
               <NavLink
+                onClick={() => setBurger(false)}
                 className={`${({ isActive }) =>
                   isActive ? "active" : ""} header__burger-link`}
                 to="/about"
               >
                 About Seedra
+              </NavLink>
+              <NavLink
+                onClick={() => setBurger(false)}
+                className={`${({ isActive }) =>
+                  isActive ? "active" : ""} header__burger-link`}
+                to="/contacts"
+              >
+                Contacts
               </NavLink>
             </div>
             <div className="header__burger-bottom">

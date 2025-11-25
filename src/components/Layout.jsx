@@ -28,7 +28,7 @@ export default function Layout() {
         onClick={scrollToTop}
         className={`back-to-top ${scroll >= 400 ? "show" : "hide"}`}
       >
-        <i class="bi bi-arrow-up-short"></i>
+        <i className="bi bi-arrow-up-short"></i>
       </div>
 
       <Header />
