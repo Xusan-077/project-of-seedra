@@ -6,6 +6,26 @@ export const cartSlice = createSlice({
     carts: JSON.parse(localStorage.getItem("carts")) || [],
   },
   reducers: {
+    addToCartInDetail: (state, action) => {
+      const item = action.payload.product;
+
+      const inCart = state.carts.find((el) => el.id == item.id);
+
+      console.log("item", item);
+      console.log("many", action.payload.many);
+
+      if (inCart) {
+        state.carts = [
+          { ...inCart, count: inCart.count + action.payload.many },
+          ...state.carts.filter((el) => el.id !== item.id),
+        ];
+      } else {
+        state.carts = [{ ...item, count: action.payload.many }, ...state.carts];
+      }
+
+      localStorage.setItem("carts", JSON.stringify(state.carts));
+    },
+
     addToCart: (state, action) => {
       const item = action.payload;
       const inCart = state.carts.find((el) => el.id == item.id);
@@ -53,5 +73,6 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, removeFromCart, addToInCart } = cartSlice.actions;
+export const { addToCartInDetail, addToCart, removeFromCart, addToInCart } =
+  cartSlice.actions;
 export default cartSlice.reducer;

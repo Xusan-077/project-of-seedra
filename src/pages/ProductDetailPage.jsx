@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToLike } from "../store/likeSlice";
-import { addToCart, removeFromCart } from "../store/cartSlice";
-import { useParams } from "react-router-dom";
+import {
+  addToCart,
+  addToCartInDetail,
+  removeFromCart,
+} from "../store/cartSlice";
+import { useLocation, useParams } from "react-router-dom";
 import { productsData } from "../Constants/Products";
 
 import unlike from "../assets/icons/unlike.svg";
@@ -36,6 +40,10 @@ export default function ProductDetailPage() {
   console.log(carts);
 
   const inCart = carts.find((el) => el.id == find.id);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <section className="detail">
@@ -138,7 +146,14 @@ export default function ProductDetailPage() {
                         {inCart.count}
                       </span>
                       <button
-                        onClick={() => dispatch(addToCart(find))}
+                        onClick={() =>
+                          dispatch(
+                            addToCartInDetail({
+                              product: find,
+                              many: changed,
+                            })
+                          )
+                        }
                         className="detail__incart-add-btn"
                       >
                         <img
@@ -150,7 +165,14 @@ export default function ProductDetailPage() {
                     </div>
                   ) : (
                     <button
-                      onClick={() => dispatch(addToCart(find))}
+                      onClick={() =>
+                        dispatch(
+                          addToCartInDetail({
+                            product: find,
+                            many: changed,
+                          })
+                        )
+                      }
                       className="detail__add-cart"
                     >
                       Add to cart

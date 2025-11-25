@@ -11,8 +11,13 @@ export default function SavatItem({ id, image, name, price, count, product }) {
   const dispatch = useDispatch();
 
   return (
-    <li onClick={() => navigate(`/product/${id}`)} className="cart__item">
-      <img src={image} alt="" className="cart__img" />
+    <li className="cart__item">
+      <img
+        onClick={() => navigate(`/product/${id}`)}
+        src={image}
+        alt=""
+        className="cart__img"
+      />
       <h2 className="cart__title">{name}</h2>
       <div className="product-item__incart-div">
         <button

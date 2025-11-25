@@ -742,6 +742,9 @@ button {
 
 /* detail */
 
+.detail__inner {
+    height: 63vh;
+}
 
 .detail__inner-top {
     display: flex;
