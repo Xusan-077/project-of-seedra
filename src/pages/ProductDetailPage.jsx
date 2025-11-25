@@ -182,7 +182,7 @@ export default function ProductDetailPage() {
               </div>
             </div>
           </div>
-          {/* <div className="detail__inner-bottom">
+          <div className="detail__inner-bottom">
             <h2 className="detail__information">Product information.</h2>
 
             <div className="detail__information-top">
@@ -218,7 +218,7 @@ export default function ProductDetailPage() {
                 </div>
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
     </section>
