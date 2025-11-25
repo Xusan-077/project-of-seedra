@@ -1381,6 +1381,7 @@ button {
     grid-template-columns: 2fr 1fr;
     gap: 30px;
     align-items: start;
+    margin-bottom: 172px;
 }
 
 .savat__top {
