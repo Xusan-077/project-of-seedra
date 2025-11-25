@@ -9,6 +9,49 @@ export default function Footer() {
     <footer className="footer">
       <div className="container">
         <div className="footer__inner">
+          <div className="footer__inner-responsive">
+            <div className="footer__inner-responsive-top">
+              <Link to="/" className="footer__logo-responsive-link">
+                <img src={Logo} alt="" className="footer__logo-responsive" />
+              </Link>
+              <ul className="footer__list footer__list--active">
+                {[
+                  {
+                    path: "",
+                    text: "ALL PRODUCTS",
+                  },
+                  {
+                    path: "terms",
+                    text: "Terms&Conditions",
+                  },
+                  {
+                    path: "about",
+                    text: "ABOUT SEEDRA",
+                  },
+                  {
+                    path: "privacy",
+                    text: "Privacy Policy",
+                  },
+                  {
+                    path: "blog",
+                    text: "OUR BLOG",
+                  },
+                ].map((el) => (
+                  <li key={el.text} className="footer__item">
+                    <NavLink
+                      className={`${({ isActive }) =>
+                        isActive
+                          ? "active"
+                          : ""} footer__link footer__link--active`}
+                      to={`/${el.path}`}
+                    >
+                      {el.text}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
           <div className="footer__inner-top">
             <ul className="footer__list">
               {[
